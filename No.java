@@ -1,5 +1,5 @@
 public class No {
-    String valor;
+        String valor;
     No esquerda;
     No direita;
 
