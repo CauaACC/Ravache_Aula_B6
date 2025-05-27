@@ -1,3 +1,7 @@
+import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class ArvoreBinaria {
     No raiz;
 
@@ -42,7 +46,6 @@ public class ArvoreBinaria {
             preOrdem(no.direita);
         }
     }
-
     public void imprimirPreOrdem() {
         preOrdem(raiz);
     }
@@ -54,7 +57,6 @@ public class ArvoreBinaria {
             emOrdem(no.direita);
         }
     }
-
     public void imprimirEmOrdem() {
         emOrdem(raiz);
     }
@@ -66,20 +68,106 @@ public class ArvoreBinaria {
             System.out.print(no.valor + " ");
         }
     }
-
     public void imprimirPosOrdem() {
         posOrdem(raiz);
     }
 
-        public void preOrdemIterativo(No no) {
-        if (no != null) {
+    public void imprimirPorNivel() {
+        int altura = altura(raiz);
+        for (int i = 1; i <= altura; i++) {
+            imprimirEmNivel(raiz, i);
+        }
+    }
+    private void imprimirEmNivel(No no, int nivel) {
+        if (no == null) return;
+        if (nivel == 1) {
             System.out.print(no.valor + " ");
-            preOrdemIterativo(no.esquerda);
-            preOrdemIterativo(no.direita);
+        } else {
+            imprimirEmNivel(no.esquerda, nivel - 1);
+            imprimirEmNivel(no.direita, nivel - 1);
+        }
+    }
+    private int altura(No no) {
+        if (no == null) return 0;
+        int alturaEsq = altura(no.esquerda);
+        int alturaDir = altura(no.direita);
+        return Math.max(alturaEsq, alturaDir) + 1;
+    }
+
+
+    public void imprimirPreOrdemIterativo() {
+        if (raiz == null) return;
+
+        Stack<No> pilha = new Stack<>();
+        pilha.push(raiz);
+
+        while (!pilha.isEmpty()) {
+            No atual = pilha.pop();
+            System.out.print(atual.valor + " ");
+
+            if (atual.direita != null) {
+                pilha.push(atual.direita);
+            }
+            if (atual.esquerda != null) {
+                pilha.push(atual.esquerda);
+            }
         }
     }
 
-    public void imprimirPreOrdemIterativo() {
-        preOrdemIterativo(raiz);
+    public void imprimirEmOrdemIterativo() {
+        Stack<No> pilha = new Stack<>();
+        No atual = raiz;
+
+        while (atual != null || !pilha.isEmpty()) {
+            while (atual != null) {
+                pilha.push(atual);
+                atual = atual.esquerda;
+            }
+
+            atual = pilha.pop();
+            System.out.print(atual.valor + " ");
+
+            atual = atual.direita;
+        }
+    }
+
+    public void imprimirPosOrdemIterativo() {
+        if (raiz == null) return;
+
+        Stack<No> pilha1 = new Stack<>();
+        Stack<No> pilha2 = new Stack<>();
+
+        pilha1.push(raiz);
+
+        while (!pilha1.isEmpty()) {
+            No atual = pilha1.pop();
+            pilha2.push(atual);
+
+            if (atual.esquerda != null) {
+                pilha1.push(atual.esquerda);
+            }
+            if (atual.direita != null) {
+                pilha1.push(atual.direita);
+            }
+        }
+
+        while (!pilha2.isEmpty()) {
+            System.out.print(pilha2.pop().valor + " ");
+        }
+    }
+
+    public void ImprimirEmnivelIterativo() {
+        if (raiz == null) return;
+
+        Queue<No> fila = new LinkedList<>();
+        fila.add(raiz);
+
+        while (!fila.isEmpty()) {
+            No atual = fila.poll();
+            System.out.print(atual.valor + " ");
+
+            if (atual.esquerda !=null) fila.add(atual.esquerda);
+            if (atual.direita !=null) fila.add(atual.direita);
+        }
     }
 }

@@ -18,8 +18,24 @@ public class Main {
         arvore.imprimirPosOrdem();
         System.out.println();
 
+        System.out.println("Elementos em nivel:");
+        arvore.imprimirPorNivel();
+        System.out.println();
+
         System.out.println("Elementos em pré-ordem (Iterativo):");
         arvore.imprimirPreOrdemIterativo();
+        System.out.println();
+
+        System.out.println("Elementos em-ordem (Iterativo):");
+        arvore.imprimirEmOrdemIterativo();
+        System.out.println();
+
+        System.out.println("Elementos em pós-ordem (Iterativo):");
+        arvore.imprimirPosOrdemIterativo();
+        System.out.println();
+
+        System.out.println("Elementos em nivel (Iterativo):");
+        arvore.ImprimirEmnivelIterativo();
         System.out.println();
     }
 }
