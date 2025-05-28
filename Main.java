@@ -37,5 +37,17 @@ public class Main {
         System.out.println("Elementos em nivel (Iterativo):");
         arvore.ImprimirEmnivelIterativo();
         System.out.println();
+
+        int totalNosIterativo = arvore.contarNosIterativo();
+        System.out.println("Total de nós na árvore binária: " + totalNosIterativo);
+        System.out.println();
+
+        int totalFolhas = arvore.contarNosFolhas();
+        System.out.println("Total de nós folha: " + totalFolhas);
+        System.out.println();
+
+        int totalNosFolhas = arvore.contarNosFolhasIterativo();
+        System.out.println("Total de nós folha (iterativo): " + totalNosFolhas);
+        System.out.println();
     }
 }

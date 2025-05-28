@@ -170,4 +170,63 @@ public class ArvoreBinaria {
             if (atual.direita !=null) fila.add(atual.direita);
         }
     }
+
+    public int contarNosIterativo() {
+        if (raiz == null) return 0;
+
+        Stack<No> pilha = new Stack<>();
+        pilha.push(raiz);
+        int totalNosIterativo = 0;
+
+        while (!pilha.isEmpty()) {
+            No atual = pilha.pop();
+            totalNosIterativo++;
+
+            if (atual.direita != null) {
+                pilha.push(atual.direita);
+            }
+            if (atual.esquerda != null) {
+                pilha.push(atual.esquerda);
+            }
+        }
+        return totalNosIterativo;
+    }
+
+
+    public int contarNosFolhas() {
+        return contarNosFolhas(raiz);
+    }
+    private int contarNosFolhas(No no) {
+        if (no == null) {
+            return 0;
+        }
+
+        if (no.esquerda == null && no.direita == null) {
+            return 1;
+        }
+
+        return contarNosFolhas(no.esquerda) + contarNosFolhas(no.direita);
+    }
+
+
+    public int contarNosFolhasIterativo() {
+        if (raiz == null) return 0;
+
+        Stack<No> pilha = new Stack<>();
+        pilha.push(raiz);
+        int contadorNosFolha = 0;
+
+        while (!pilha.isEmpty()) {
+            No atual = pilha.pop();
+
+            if (atual.esquerda == null && atual.direita == null) {
+                contadorNosFolha++;
+            }
+
+            if (atual.direita != null) pilha.push(atual.direita);
+            if (atual.esquerda != null) pilha.push(atual.esquerda);
+        }
+
+        return contadorNosFolha;
+    }
 }
