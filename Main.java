@@ -49,5 +49,9 @@ public class Main {
         int totalNosFolhas = arvore.contarNosFolhasIterativo();
         System.out.println("Total de nós folha (iterativo): " + totalNosFolhas);
         System.out.println();
+
+        int totalNosFolhasFila = arvore.contarNosFolhasIterativoFila();
+        System.out.println("Total de nós folha (iterativo e fila): " + totalNosFolhasFila);
+        System.out.println();
     }
 }

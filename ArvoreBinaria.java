@@ -31,13 +31,13 @@ public class ArvoreBinaria {
     public int contarNos() {
         return contarNos(raiz);
     }
-
     private int contarNos(No no) {
         if (no == null) {
             return 0;
         }
         return 1 + contarNos(no.esquerda) + contarNos(no.direita);
     }  
+
 
     public void preOrdem(No no) {
         if (no != null) {
@@ -50,6 +50,7 @@ public class ArvoreBinaria {
         preOrdem(raiz);
     }
 
+
     public void emOrdem(No no) {
         if (no != null) {
             emOrdem(no.esquerda);
@@ -61,7 +62,8 @@ public class ArvoreBinaria {
         emOrdem(raiz);
     }
 
-        public void posOrdem(No no) {
+
+    public void posOrdem(No no) {
         if (no != null) {
             posOrdem(no.esquerda);
             posOrdem(no.direita);
@@ -71,6 +73,7 @@ public class ArvoreBinaria {
     public void imprimirPosOrdem() {
         posOrdem(raiz);
     }
+
 
     public void imprimirPorNivel() {
         int altura = altura(raiz);
@@ -114,6 +117,7 @@ public class ArvoreBinaria {
         }
     }
 
+
     public void imprimirEmOrdemIterativo() {
         Stack<No> pilha = new Stack<>();
         No atual = raiz;
@@ -126,17 +130,16 @@ public class ArvoreBinaria {
 
             atual = pilha.pop();
             System.out.print(atual.valor + " ");
-
             atual = atual.direita;
         }
     }
+
 
     public void imprimirPosOrdemIterativo() {
         if (raiz == null) return;
 
         Stack<No> pilha1 = new Stack<>();
         Stack<No> pilha2 = new Stack<>();
-
         pilha1.push(raiz);
 
         while (!pilha1.isEmpty()) {
@@ -150,11 +153,11 @@ public class ArvoreBinaria {
                 pilha1.push(atual.direita);
             }
         }
-
         while (!pilha2.isEmpty()) {
             System.out.print(pilha2.pop().valor + " ");
         }
     }
+
 
     public void ImprimirEmnivelIterativo() {
         if (raiz == null) return;
@@ -170,6 +173,7 @@ public class ArvoreBinaria {
             if (atual.direita !=null) fila.add(atual.direita);
         }
     }
+
 
     public int contarNosIterativo() {
         if (raiz == null) return 0;
@@ -200,11 +204,9 @@ public class ArvoreBinaria {
         if (no == null) {
             return 0;
         }
-
         if (no.esquerda == null && no.direita == null) {
             return 1;
         }
-
         return contarNosFolhas(no.esquerda) + contarNosFolhas(no.direita);
     }
 
@@ -222,11 +224,28 @@ public class ArvoreBinaria {
             if (atual.esquerda == null && atual.direita == null) {
                 contadorNosFolha++;
             }
-
             if (atual.direita != null) pilha.push(atual.direita);
             if (atual.esquerda != null) pilha.push(atual.esquerda);
         }
-
         return contadorNosFolha;
+    }
+
+
+    public int contarNosFolhasIterativoFila() {
+        if (raiz == null) return 0;
+
+        Queue<No> fila = new LinkedList<>();
+        fila.add(raiz);
+        int contadorNosFolhaFila = 0;
+
+        while (!fila.isEmpty()) {
+            No atual = fila.remove();
+            if (atual.esquerda == null && atual.direita == null) {
+                contadorNosFolhaFila++;
+            }
+            if (atual.direita != null) fila.add(atual.direita);
+            if (atual.esquerda !=null) fila.add(atual.esquerda);
+        }
+        return contadorNosFolhaFila;
     }
 }
