@@ -110,10 +110,10 @@ public class ArvoreBinariaAVL {
 
     private No rotacaoDireita(No y) {
         No x = y.esquerda;
-        No T2 = x.direita;
+        No TEMP2 = x.direita;
 
         x.direita = y;
-        y.esquerda = T2;
+        y.esquerda = TEMP2;
 
         y.altura = 1 + Math.max(altura(y.esquerda), altura(y.direita));
         x.altura = 1 + Math.max(altura(x.esquerda), altura(x.direita));
@@ -123,10 +123,10 @@ public class ArvoreBinariaAVL {
 
     private No rotacaoEsquerda(No x) {
         No y = x.direita;
-        No T2 = y.esquerda;
+        No TEMP2 = y.esquerda;
 
         y.esquerda = x;
-        x.direita = T2;
+        x.direita = TEMP2;
 
         x.altura = 1 + Math.max(altura(x.esquerda), altura(x.direita));
         y.altura = 1 + Math.max(altura(y.esquerda), altura(y.direita));
