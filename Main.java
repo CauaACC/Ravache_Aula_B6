@@ -2,6 +2,7 @@ public class Main {
         public static void main(String[] args) {
         ArvoreBinaria arvore = new ArvoreBinaria();
         ArvoreBinariaAVL arvoreAVL = new ArvoreBinariaAVL();
+        ArvoreBinariaRB arvoreRB = new ArvoreBinariaRB();
 
         int totalNos = arvore.contarNos();
         System.out.println("Total de nós na árvore binária: " + totalNos);
@@ -90,5 +91,28 @@ public class Main {
         System.out.println("Removendo H:");
         arvoreAVL.remover("H");
         arvoreAVL.imprimirEmOrdem();
+
+        //ARVORE RB
+
+        System.out.println("Arvore RB em ordem: ");
+        System.out.println("Adicionando 10: ");
+        arvoreRB.inserir(10);
+        arvoreRB.emOrdem();
+        System.out.println();
+        System.out.println("Adicionando 20: ");
+        arvoreRB.inserir(20);
+        arvoreRB.emOrdem();
+        System.out.println();
+        System.out.println("Adicionando 15: ");
+        arvoreRB.inserir(15);
+        arvoreRB.emOrdem();
+        System.out.println();
+        System.out.println("Adicionando 5: ");
+        arvoreRB.inserir(5);
+        arvoreRB.emOrdem();
+        System.out.println();
+        System.out.println("Adicionando 1: ");
+        arvoreRB.inserir(1);
+        arvoreRB.emOrdem();
     }
 }
